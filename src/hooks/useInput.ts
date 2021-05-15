@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+//reviw: add type for defaultValue
 export const useInput = (defaultValue) => {
   const [value, setValue] = useState<string>('');
   function onChange(e) {

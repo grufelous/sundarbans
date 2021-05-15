@@ -7,8 +7,10 @@ function Experimental() {
     useEffect(() => {
         prevCountRef.current = count;
     });
+    //review: rename usePrevHook to prevCount. 
     const usePrevHook = usePreviousState(count);
 
+    //review: create function onIncrement and onDecrement
     return (
         <div>
             Current: {count}

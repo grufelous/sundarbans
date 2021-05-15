@@ -16,6 +16,7 @@ const initialStore = {
     ],
 };
 
+//review: take out actionType in a constants file so that we can use it here as well in mapDispatchToProps.
 const appReducer = (state = initialStore, action) => {
     switch(action.type) {
         case 'ADMIN/DELETE_ITEM':
@@ -23,11 +24,13 @@ const appReducer = (state = initialStore, action) => {
             console.log(newStoreItems)
             return {
                 ...state,
+                //review: why using filter? there will only be one item that we have to remove. although filter works as well but it will be better to find that one item and remove
                 storeItems: state.storeItems.filter(item => item.id !== action.itemId)
             }
         case 'ADMIN/ADD_ITEM':
             return {
                 ...state,
+                //review: no new need for concat here. you can write it as [...state.storeItems, {...action.newItem, id: (state.storeItems.length+1).toString()}]
                 storeItems: state.storeItems.concat({
                     ...action.newItem,
                     'id': (state.storeItems.length+1).toString(),

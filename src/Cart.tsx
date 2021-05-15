@@ -1,10 +1,17 @@
 import React from 'react';
 import { usePreviousState } from './hooks/usePreviousState';
 import { ICartItem } from './types';
+//review: rename ICartItem to CartItem
 
+
+//review: add types
+//review: remove inline css
 const Cart = ({ cartItems, removeFromCart }) => {
+    //review: rename usePreviousState to usePrevious
     const prevCart = usePreviousState(cartItems) || [];
+    //review: no need to take out renderCartItems as separate function here. return jsx is very small
     const renderCartItems = (cartItems: Array<ICartItem>): JSX.Element[] => {
+        //return cartItems.map((cartItem: ICartItem) => (
         return cartItems.map(cartItem => (
             <div key={'cart'+cartItem.id}>
                 <span>

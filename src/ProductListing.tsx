@@ -1,9 +1,14 @@
 import React from 'react';
 import Product from './Product';
 import { IProduct } from './types';
+//review: lets not follow interface name as IProduct. Let it be Product only
 
+//review: add types.
+//review: do not use inline css
 const ProductListing = ({ prodList, addToCart }) => {
+    //review: no need for seaprate function. write this directly in returned jsx. if you wan't to use fn, then use `useMemo` here.
     const getProdList = (): JSX.Element[] => {
+        //review: use prod.id as key
         return prodList.map((prod: IProduct, i: number) => (
             <div key={i}>
                 <Product
