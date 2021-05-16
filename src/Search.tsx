@@ -2,7 +2,7 @@ import React from 'react'
 
 //review: add type for term as well
 //review: take out onChange function and wrap it with useCallback
-const Search = (props: {term, setTerm: Function}) => {
+const Search = (props: {term: string, setTerm: Function}) => {
     return (
         <>
             <input 

@@ -26,6 +26,7 @@ const StoreFront = ({ storeItems, cart, addToCart, removeFromCart }) => {
                  prodList={storeItems}
                  addToCart={addToCart}></ProductListing>
                 <Cart
+                 prodList={storeItems}
                  cartItems={cart}
                  removeFromCart={removeFromCart}></Cart>    
             </div>

@@ -1,7 +1,6 @@
-// eslint-disable-next-line
 const initialStore = {
     cart: [
-        {id: '3', name: 'YAPA', make: 'Another', price: 90.101, description: 'Yet another product A', quantity: 2},
+        {id: '3', quantity: 2},
     ],
     storeItems: [
         {id: '1', name: 'Prod A', make: 'The best one', price: 42, description: 'The best product A in the market'},
@@ -25,16 +24,18 @@ const appReducer = (state = initialStore, action) => {
             return {
                 ...state,
                 //review: why using filter? there will only be one item that we have to remove. although filter works as well but it will be better to find that one item and remove
+                // won't they have the same complexity? filter = for+if, vs indexof+del
                 storeItems: state.storeItems.filter(item => item.id !== action.itemId)
             }
         case 'ADMIN/ADD_ITEM':
             return {
                 ...state,
-                //review: no new need for concat here. you can write it as [...state.storeItems, {...action.newItem, id: (state.storeItems.length+1).toString()}]
-                storeItems: state.storeItems.concat({
-                    ...action.newItem,
-                    'id': (state.storeItems.length+1).toString(),
-                })
+                //review: no new need for concat here. you can write it as [...state.storeItems, {...action.newItem, id: (state.storeItems.length+1).toString()}] - ✅
+                storeItems: [...state.storeItems, {...action.newItem, 'id': (state.storeItems.length+1).toString()}]
+                // storeItems: state.storeItems.concat({
+                //     ...action.newItem,
+                //     'id': (state.storeItems.length+1).toString(),
+                // })
             }
         case 'CART/ADD_ITEM':
             return {

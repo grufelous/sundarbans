@@ -45,7 +45,7 @@ const Product = ({ id, name, make, price, description, addToCartFn }) => {
     const [qty, setQty] = useState(1);
     const [explode, setExplode] = useState(false);
     useEffect(() => {
-        if(qty === 5)
+        if(qty === 10)
             setExplode(true)
     }, [qty])
     return (
@@ -65,7 +65,7 @@ const Product = ({ id, name, make, price, description, addToCartFn }) => {
                 min="1"
                 style={{ width: '4em', textAlign: 'center' }} />
                 <button onClick={() => addToCartFn({
-                    id, name, make, price, description, 'quantity': qty
+                    id, 'quantity': qty
                 })}>Add {qty} to Cart</button>
                 {explode && <ExplodingComp />}
             </ErrorBoundary>
