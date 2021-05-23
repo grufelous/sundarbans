@@ -1,14 +1,14 @@
 import React from 'react';
 import { usePreviousState } from './hooks/usePreviousState';
-import { CartItem, IProduct } from './types';
+import { CartItem, Product } from './types';
 //review: rename ICartItem to CartItem - ✅
 
 
 //review: add types
 //review: remove inline css
-const Cart = ({ prodList, cartItems, removeFromCart }) => {
+const Cart = ({ productList, cartItems, removeFromCart }) => {
     const getProdFromId = (id: string) => {
-        const filterResult = prodList.filter((product: IProduct) => (product.id === id))
+        const filterResult = productList.filter((product: Product) => (product.id === id))
         return filterResult.length===1 ? filterResult[0] : {'id': 'undefined'}
     }
     //review: rename usePreviousState to usePrevious

@@ -1,27 +1,32 @@
 import React from 'react';
-import Product from './Product';
-import { IProduct } from './types';
-//review: lets not follow interface name as IProduct. Let it be Product only
+import ProductItem from './ProductItem';
+import { Product } from './types';
+//review: lets not follow interface name as Product. Let it be ProductItem only ✅
 
-//review: add types.
+interface ProductListingPropTypes {
+    productList: Array<Product>,
+    addToCart: Function,
+}
+
+//review: add types - ✅
 //review: do not use inline css
-const ProductListing = ({ prodList, addToCart }) => {
+const ProductListing = ({ productList, addToCart }: ProductListingPropTypes) => {
     //review: no need for seaprate function. write this directly in returned jsx. if you wan't to use fn, then use `useMemo` here.
     const getProdList = (): JSX.Element[] => {
-        //review: use prod.id as key
-        return prodList.map((prod: IProduct, i: number) => (
-            <div key={i}>
-                <Product
-                key={i}
-                id={prod.id}
-                name={prod.name}
-                make={prod.make}
-                price={prod.price}
-                description={prod.description}
-                addToCartFn={addToCart} />
-                {prodList.length === i+1
+        //review: use prod.id as key - ✅
+        return productList.map((prod: Product, i: number) => (
+            <div key={prod.id}>
+                <ProductItem
+                 key={prod.id}
+                 id={prod.id}
+                 name={prod.name}
+                 make={prod.make}
+                 price={prod.price}
+                 description={prod.description}
+                 addToCartFn={addToCart} />
+                {productList.length === i+1
                  ? null
-                 : <hr key={'line' + i} />}
+                 : <hr key={'line' + prod.id} />}
             </div>
         ))
     }
@@ -31,7 +36,7 @@ const ProductListing = ({ prodList, addToCart }) => {
              style={{ display: 'flex',
                     flexDirection: 'column',
                     flexGrow: 3,}}>
-                <h2>Viewing {prodList.length} products</h2>
+                <h2>Viewing {productList.length} products</h2>
                 
                 {getProdList()}
             </div>

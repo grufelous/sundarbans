@@ -41,7 +41,12 @@ const ItemErrorFallback = ({error}) => {
 //review: add types
 //review: avoid inline css
 //review: you can add a com
-const Product = ({ id, name, make, price, description, addToCartFn }) => {
+
+type AddToCartFn = () => {} // Function
+
+// onCreate: (params: { accountId: string; objective: string; channelType: string }) => void;
+
+const ProductItem = ({ id, name, make, price, description, addToCartFn }) => {
     const [qty, setQty] = useState(1);
     const [explode, setExplode] = useState(false);
     useEffect(() => {
@@ -81,8 +86,8 @@ const PropTypes = {
     }
 }
 
-Product.propTypes = {
+ProductItem.propTypes = {
     name: PropTypes.string
 }
 
-export default Product
+export default ProductItem

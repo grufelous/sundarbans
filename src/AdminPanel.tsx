@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IProduct } from './types';
+import { Product } from './types';
 
 //review: add types for storeItems, addItem, deleteItem
 const AdminPanel = ({ storeItems, addItem, deleteItem }) => {
@@ -24,14 +24,14 @@ const AdminPanel = ({ storeItems, addItem, deleteItem }) => {
         console.log(`Type: ${typeof storeItems}`)
         console.log(storeItems)
         //review: if you have a unique identifier in our object always use that as your key. index should be last resort. Use Id as key here
-        return storeItems.map((storeItem: IProduct, i: number) => (
+        return storeItems.map((storeItem: Product) => (
             <>
                 <li 
-                 key={i}>
-                {storeItem.name}
+                 key={storeItem.id}>
+                <span key={storeItem.id}>{storeItem.name}</span>
                     <button
                      onClick={() => deleteItem(storeItem.id)}
-                     key={'delBtn' + i}>
+                     key={'delBtn' + storeItem.id}>
                         Delete
                     </button>
                 </li>
@@ -48,7 +48,7 @@ const AdminPanel = ({ storeItems, addItem, deleteItem }) => {
             <form onSubmit={handleNewItem}>
                 <input type="text" placeholder="Name" value={newName} onChange={(e) => setNewName(e.target.value)}/>
                 <input type="text" placeholder="Make" value={newMake} onChange={(e) => setNewMake(e.target.value)} />
-                <input type="text" placeholder="Price" value={newPrice} onChange={(e) => setNewPrice(e.target.value)} />
+                <input type="number" placeholder="Price" value={newPrice} onChange={(e) => setNewPrice(e.target.value)} />
                 <input type="text" placeholder="Description" value={newDescription} onChange={(e) => setNewDescription(e.target.value)} />
                 <input type="submit" value="Add"/>
             </form>
