@@ -5,6 +5,9 @@ import ProductListing from './ProductListing';
 import Search from './Search';
 import { CartItem, Product } from './types';
 
+
+import './Storefront.scss';
+
 interface StorePropTypes {
     storeItems: Array<Product>,
     cart: Array<CartItem>,
@@ -29,7 +32,7 @@ const StoreFront = ({ storeItems, cart, addToCart, removeFromCart }: StorePropTy
              onChange={onChange} />
              Search2: {value}
             <p>Searched for {searchTerm}</p>
-            <div style={{display: 'flex',}}>
+            <div id="StorefrontMain">
                 <ProductListing
                  productList={storeItems}
                  addToCart={addToCart}></ProductListing>

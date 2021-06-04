@@ -3,6 +3,7 @@ import { usePreviousState } from './hooks/usePreviousState';
 import { CartItem, Product } from './types';
 //review: rename ICartItem to CartItem - ✅
 
+import './styles/Cart.css'
 
 //review: add types
 //review: remove inline css
@@ -33,10 +34,7 @@ const Cart = ({ productList, cartItems, removeFromCart }) => {
     console.log(`cartItems is ${typeof cartItems}, prevCart is ${typeof prevCart}`)
     return (
         <>
-            <div
-             style={{ display: 'flex', 
-                    flexDirection: 'column',
-                    flexGrow: 2}}>
+            <div id="StorefrontCart">
                 <h3>Cart</h3>
                 {renderCartItems(cartItems)}
                 <hr />

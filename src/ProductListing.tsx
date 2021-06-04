@@ -3,6 +3,8 @@ import ProductItem from './ProductItem';
 import { Product } from './types';
 //review: lets not follow interface name as Product. Let it be ProductItem only ✅
 
+import './styles/ProductListing.css'
+
 interface ProductListingPropTypes {
     productList: Array<Product>,
     addToCart: Function,
@@ -32,10 +34,7 @@ const ProductListing = ({ productList, addToCart }: ProductListingPropTypes) => 
     }
     return (
         <>
-            <div
-             style={{ display: 'flex',
-                    flexDirection: 'column',
-                    flexGrow: 3,}}>
+            <div id="StorefrontListing">
                 <h2>Viewing {productList.length} products</h2>
                 
                 {getProdList()}

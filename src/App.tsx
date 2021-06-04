@@ -63,5 +63,22 @@ const mapDispatchToProps = (dispatch) => ({
   addItemCart: (newItem) => dispatch({type: 'CART/ADD_ITEM', newItem}),
   removeItemCart: (id) => dispatch({type: 'CART/REMOVE_ITEM', itemId: id}),
 })
+//__App notation for testing purposes
+export const __App = App
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+
+/**
+ * For testing via mock store:
+ * import configureMockStore from 'redux-mock-store';
+  import thunk from 'redux-thunk';
+
+  export const mockStoreWithThunk = configureMockStore([thunk]);
+
+  export default {
+    mockStoreWithThunk,
+  };
+ * 
+ */

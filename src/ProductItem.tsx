@@ -1,5 +1,6 @@
 import React, { useEffect, useState, ReactNode, ErrorInfo } from 'react';
 
+import './styles/ProductItems.css';
 interface Props {
     children: ReactNode
 }
@@ -54,27 +55,32 @@ const ProductItem = ({ id, name, make, price, description, addToCartFn }) => {
             setExplode(true)
     }, [qty])
     return (
-        <>
-            <h3>{name}</h3>
-            <h4>{make} — {price}</h4>
-            {description
-             ? <p>{description}</p>
-             : <p>No description available for {name}</p>}
-            {`Exploding: ${explode}`}
-            <ErrorBoundary>
-                <input 
-                type="number"
-                name="qtySelector" 
-                value={qty} 
-                onChange={(e) => setQty(Number.parseInt(e.target.value))}
-                min="1"
-                style={{ width: '4em', textAlign: 'center' }} />
-                <button onClick={() => addToCartFn({
-                    id, 'quantity': qty
-                })}>Add {qty} to Cart</button>
-                {explode && <ExplodingComp />}
-            </ErrorBoundary>
-        </>
+        <div className="ProductItem">
+            <div>
+                <h3>{name}</h3>
+                <h4>{make} — {price}</h4>
+                {description
+                ? <p>{description}</p>
+                : <p>No description available for {name}</p>}    
+            </div>
+            <div id="item-state">
+                {`Exploding: ${explode}`}
+                <ErrorBoundary>
+                    <input 
+                    type="number"
+                    name="qtySelector" 
+                    value={qty} 
+                    onChange={(e) => setQty(Number.parseInt(e.target.value))}
+                    min="1"
+                    style={{ width: '4em', textAlign: 'center' }} />
+                    <button onClick={() => addToCartFn({
+                        id, 'quantity': qty
+                    })}>Add {qty} to Cart</button>
+                    {explode && <ExplodingComp />}
+                </ErrorBoundary>
+            </div>
+            
+        </div>
     )
 }
 

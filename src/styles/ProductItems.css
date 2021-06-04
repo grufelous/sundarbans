@@ -1,0 +1,24 @@
+.ProductItem {
+    /* border: 1px dotted green; */
+    box-sizing: border-box;
+    padding: 2rem;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.4s ease-in-out;
+    margin-right: 1rem;
+}
+
+.ProductItem:hover {
+    background-color: #eee;
+    color: #000;
+}
+
+.ProductItem h3 {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#item-state {
+    align-self: flex-end;
+    padding-bottom: 1rem;
+}
